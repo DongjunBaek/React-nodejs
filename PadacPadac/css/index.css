@@ -1,0 +1,40 @@
+.header{
+    width: 100%;
+    height: 900px;
+}
+.header-bg{
+    /* background-image: url("../images/index/imagination-5153623_1920.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header-img-box{
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.header-img-box img{
+    width: 100%;
+    height: 100%;
+}
+.header-text-box{
+    color: #3b3b3b;
+    font-size: 24px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 48%;
+    height: 100%;
+    position: relative;
+    float: right;
+    justify-content: center;
+    
+}
+.section{
+    width: 100%;
+    height: 600px;
+}

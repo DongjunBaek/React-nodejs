@@ -9,128 +9,9 @@
     <script src="https://kit.fontawesome.com/226b55f414.js" crossorigin="anonymous"></script>    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-    <style>    
-    body{
-        width: 100%;
-        margin: 0 auto;        
-        font-family: 'Noto Sans', sans-serif;        
-    }
-    .kor{
-        font-family: 'Noto Sans KR', sans-serif;
-    }
-    .mp{
-        margin: 0px;
-        padding: 0px;
-    }
-    .filter{
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-    .container{
-        width: 1280px;
-        height: 100%;
-        margin: 0 auto;        
-    }
-    .flex{
-        display: flex;
-    }
-    .h3{
-        font-weight: 300;
-    }
-    .h3:hover{
-        font-weight: 700;
-    }
-    a{
-        color: #ebebeb;
-        text-decoration: none;
-    }
-    a:visited a:active a:link{
-        color:#ebebeb;
-    }
-    .test{
-        border: 1px solid #eb9999;       
-    }    
-    .nav{
-        width: 100%;
-        height: 60px;     
-        background-color: rgba(0, 0, 0, 0.95);
-    }
-    .nav-ul{
-        display: flex;
-        position: relative;
-        float: right;
-        list-style-type: none;
-        color: #ebebeb;
-        width: 50%;        
-        height: 100%;
-    }
-    .nav-ul li{
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;        
-        flex-basis: auto;
-        cursor: pointer;
-    }
-    .nav-ul li:hover{
-        color: cornflowerblue;        
-    }
-    .header{
-        width: 100%;
-        height: 900px;
-    }
-    .header-bg{
-        background-image: url("./images/index/index.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .header-img-box{
-        position: relative;
-        float: left;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-    .header-text-box{
-        color: #ebebeb;
-        font-size: 24px;
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        width: 50%;
-        height: 100%;
-        position: relative;
-        float: right;
-        justify-content: center;
-    }
-    .section{
-        width: 100%;
-        height: 600px;
-    }
-    .footer{
-        width: 100%;
-        height: 300px;
-        background-color: rgba(0, 0, 0, 0.95);
-        color: #ebebeb;        
-    }
-    .footer-div{
-        display: flex;
-        flex: 1;
-        flex-direction: column;   
-        padding-top: 4%;
-        padding-left: 5%;
-        padding-bottom: 5%;
-        justify-content: space-between;
-    }
-    .footer-div h3{
-        margin: 0px;
-    }
-    </style>
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/index.css">    
+    <!-- #endregion -->
 </head>
 <!-- 1280 -->
 <body >
@@ -138,32 +19,32 @@
     <nav class="nav">
         <div class="container">
             <ul class="nav-ul mp">
-                <li>HOME</li>
-                <li>ABOUT ME</li>
-                <li>PORTPOLIO</li>
-                <li>BOARD</li>
-                <li>CALENDAR</li>
-                <li>CONTACT</li>
+                <li><a href="/index.html">HOME</a></li>
+                <li><a href="./aboutMe/aboutMe.html">ABOUT ME</a></li>
+                <li><a href="">PORTPOLIO</a></li>
+                <li><a href="">BOARD</a></li>
+                <li><a href="">CALENDAR</a></li>
+                <li><a href="">CONTACT</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- 1280 900 -->
     <header class="header header-bg">
-        <div class="filter">
+        <!-- <div class="filter"> -->
         <div class="container">
                 <div class="header-img-box">
-                    <img src="./images/index/cube.png" alt="">
+                    <img src="./images/index/imagination-5153623_1920.jpg" alt="">
                 </div>
                 <div class="header-text-box">
                     <h1 class="">Welcome to PADAC PADAC</h1>
-                    <h3 class="h3">Posting</h3>
-                    <h3 class="h3">PortPolio</h3>
-                    <h3 class="h3">Toy Project</h3>
-                    <h3 class="h3">Sharing</h3>                    
+                    <h3 class="h3">ABOUT ME</h3>
+                    <h3 class="h3">PORTPOLIO</h3>
+                    <h3 class="h3">BOARD</h3>
+                    <h3 class="h3">CALENDAR</h3>                    
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </header>
 
     <!-- 1280 600 -->

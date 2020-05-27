@@ -1,0 +1,33 @@
+.header{
+    height: 400px;
+    justify-content: center;
+    overflow: hidden;
+}
+.header img{    
+    position:  absolute;
+    width: 80%;
+    height: 400px;
+}
+.header-div{
+    position: relative;
+    left: 25%;
+    top: 15%;
+    width: 80%;
+    overflow: hidden;
+}
+article{
+    width: 100%;
+    min-height: fit-content;
+    flex-direction: column;
+    text-align: center;
+}
+.article-container{    
+    flex-direction: row;
+}
+.article-container div{    
+    flex: 1;    
+}
+.article-container h1{    
+    width: 100%;
+    text-align: center;
+}
