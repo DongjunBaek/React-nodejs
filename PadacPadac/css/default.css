@@ -26,6 +26,9 @@ body{
 .flex{
     display: flex;
 }
+.column{
+    flex-direction: column;
+}
 .h3{
     font-weight: 300;
 }
@@ -40,7 +43,7 @@ a:visited a:active a:link{
     color:#ebebeb;
 }
 .test{
-    /* border: 1px solid #eb9999;        */
+    border: 1px solid #eb9999;       
 }    
 .nav{
     width: 100%;
@@ -95,4 +98,10 @@ a:visited a:active a:link{
 }
 .footer-div h3{
     margin: 0px;
+}
+
+
+
+.text-left{
+    text-align: left;
 }
