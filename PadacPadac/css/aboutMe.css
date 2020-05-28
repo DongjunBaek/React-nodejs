@@ -22,19 +22,44 @@ article{
     text-align: center;
 }
 .article-container{    
-    flex-direction: row;
+    flex-direction: row;    
 }
 .article-container div{    
-    flex: 1;    
+    flex: 1;
 }
-.article-container h1{    
+.edu table{
     width: 100%;
-    text-align: center;
 }
-li{
-    list-style: none;
+.edu table thead{
+    width: 100%;
+}
+.edu table tr{
+    width: 100%;
+}
+.edu table tr td{
+    width: 50%;
 }
 
-.edu {
-    
+.qna .article-container h1{
+    text-align: left;
+}
+.qna .article-container div{    
+    flex: 1;
+    width: 75%;
+    margin: 0 auto
+}
+
+.info div{
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+}
+.info div img{
+    width: 100%;
+    height: 100%;
+}
+
+.margin{
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
