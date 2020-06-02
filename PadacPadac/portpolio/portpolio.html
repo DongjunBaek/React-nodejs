@@ -11,7 +11,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/portpolio.css">
-    
+    <script>
+        window.onload = function(){
+            // slide show                             
+            var slide = document.querySelectorAll(".slide-ifwe li");            
+            slide.forEach(function(value, index){
+                if(index != 0){
+                    value.style.display = "none";
+                }
+            });
+
+            // slide show button            
+            var slideDot = document.querySelectorAll(".slide-dot-ifwe li");
+            slideDot.forEach(function(value, index){
+                value.onclick = function(){                    
+                    slide.forEach(function(value,idx){                        
+                        value.style.display = "none";   
+                        slideDot[idx].style.color="lightgray";
+                    });
+                    slide[index].style.display = "block";
+                    slideDot[index].style.color = "gray"; 
+                }
+                                              
+            });
+
+            // slide show                             
+            var slide2 = document.querySelectorAll(".padac li");            
+            slide2.forEach(function(value, index){
+                if(index != 0){
+                    value.style.display = "none";
+                }
+            });
+
+            // slide show button            
+            var slideDot2 = document.querySelectorAll(".slide-dot-padac li");              
+            slideDot2.forEach(function(value, index){
+                value.onclick = function(){                    
+                    slide2.forEach(function(value,idx){                        
+                        value.style.display = "none";   
+                        slideDot2[idx].style.color="lightgray";
+                    });
+                    slide2[index].style.display = "block";
+                    slideDot2[index].style.color = "gray"; 
+                }
+                                              
+            });
+        };
+
+
+    </script>
 </head>
 <!-- 1280 -->
 <body>
@@ -26,6 +74,7 @@
                 <li><a href="">CALENDAR</a></li>
                 <li><a href="">CONTACT</a></li>
             </ul>
+            
         </div>
     </nav>
 
@@ -46,20 +95,87 @@
     <section class="section test flex eng">        
         <!-- education article box -->
         <article class="article test flex ifwe">            
-            <h1 class="test center"> IFWE Project</h1>
+            <h1 class="test center"> IFWE info</h1>
             <div class="container center flex test">
                 <div class="slide test">
-                    <p>slide show</p>
-                    
-                </div>
-                <div class="desc test">
-                    <p>description</p>
+                    <!-- <p style="position: absolute;">slide show</p> -->
+                    <ul class="slide-ul test flex slide-ifwe">
+                        <li>
+                            <img src="../images/portpolio/ifwe_index.png" alt="">
+                            <div class="desc-project">
+                                <span>Ifwe Index page 입니다. 사용자 로그인 및 관리자 로그인이 가능합니다.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../images/portpolio/ifwe_main.png" alt="">
+                            <div class="desc-project">
+                                <span>Ifwe Main page 입니다. Navi menu 선택을 할 수 있으며, 나의 소모임 바로가기 기능을 지원합니다. </span>
+                                <span>소모임 추천과 공지사항 및 이벤트 배너 슬라이드를 활용 하여 사용자에게 보여줍니다.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../images/portpolio/ifwe_search.png" alt="">
+                            <div class="desc-project">
+                                <span></span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../images/portpolio/ifwe_search.png" alt="">
+                            <div class="desc-project">
+                                <span>Ifwe Index page 입니다. 사용자 로그인 및 관리자 로그인이 가능합니다.</span>
+                            </div>
+                        </li>                       
+                    </ul>
+                    <ul class="slide-dot flex center test slide-dot-ifwe">
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                    </ul>
                 </div>
             </div>
         </article>
-        <article class="article test flex">
-        </article>
-        <article class="article test flex">
+
+        <article class="article test flex ifwe">            
+            <h1 class="test center"> PADACPADAC info</h1>
+            <div class="container center flex test">
+                <div class="slide test">
+                    <!-- <p style="position: absolute;">slide show</p> -->
+                    <ul class="slide-ul test flex padac">
+                        <li>
+                            <img src="../images/portpolio/ifwe_index.png" alt="">
+                            <div class="desc-project">
+                                <span>Ifwe Index page 입니다. 사용자 로그인 및 관리자 로그인이 가능합니다.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../images/portpolio/ifwe_main.png" alt="">
+                            <div class="desc-project">
+                                <span>Ifwe Main page 입니다. Navi menu 선택을 할 수 있으며, 나의 소모임 바로가기 기능을 지원합니다. </span>
+                                <span>소모임 추천과 공지사항 및 이벤트 배너 슬라이드를 활용 하여 사용자에게 보여줍니다.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../images/portpolio/ifwe_search.png" alt="">
+                            <div class="desc-project">
+                                <span></span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../images/portpolio/ifwe_search.png" alt="">
+                            <div class="desc-project">
+                                <span>Ifwe Index page 입니다. 사용자 로그인 및 관리자 로그인이 가능합니다.</span>
+                            </div>
+                        </li>                       
+                    </ul>
+                    <ul class="slide-dot flex center test slide-dot-padac">
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                        <li><i class="fas fa-circle"></i></li>
+                    </ul>
+                </div>
+            </div>
         </article>
     </section>
 </body>

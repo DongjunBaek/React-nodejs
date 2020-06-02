@@ -1,6 +1,6 @@
 .header{
     width: 100%;
-    height: 900px;
+    /* height: 900px; */
 }
 .header-bg{
     /* background-image: url("../images/index/imagination-5153623_1920.jpg"); */
@@ -32,6 +32,7 @@
     position: relative;
     float: right;
     justify-content: center;
+    padding-left: 3%;
     
 }
 .section{

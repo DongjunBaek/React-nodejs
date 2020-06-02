@@ -13,6 +13,41 @@
     <!-- <link rel="stylesheet" href="./css/aboutMe.css"> -->
     <link rel="stylesheet" href="./css/index.css">
     <!-- #endregion -->
+    <script>
+    function mobileMode(){
+        // console.log("mobile");
+        console.log(document.querySelector("header .container"));
+        document.querySelector("header .container").style.flexDirection = "column";
+        document.querySelector(".header-img-box").style.width = "100%";
+        document.querySelector(".header-text-box").style.width = "100%";
+        document.querySelector(".header").style.removeProperty("height");        
+        document.querySelector(".header").style.minHeight= "900px";
+        document.querySelector(".nav-ul").style.width= "100%";
+        
+    }
+    function pcMode(){
+        // console.log("pc");
+        document.querySelector("header .container").style.flexDirection = "row";
+        document.querySelector(".header-img-box").style.width = "50%";
+        document.querySelector(".header-text-box").style.width = "50%";
+        document.querySelector(".header").style.removeProperty("min-height");        
+        document.querySelector(".header").style.height= "900px";
+        document.querySelector(".nav-ul").style.width= "50%";
+    }
+    // browser size resize
+    window.addEventListener('resize', function() {
+        // console.log(this.innerHeight);
+        // console.log(this.innerWidth);
+        // var userH = this.innerHeight;
+        var userW = this.innerWidth;
+        if(userW < 968){
+            mobileMode();
+        }else {
+            pcMode();
+        }
+
+    }, true);
+    </script>
 </head>
 <!-- 1280 -->
 <body >
@@ -33,16 +68,16 @@
     <!-- 1280 900 -->
     <header class="header header-bg">
         <!-- <div class="filter"> -->
-        <div class="container">
+        <div class="container flex">
                 <div class="header-img-box">
                     <img src="./images/index/imagination-5153623_1920.jpg" alt="">
                 </div>
                 <div class="header-text-box">
-                    <h1 class="">Welcome to PADAC PADAC</h1>
-                    <h3 class="h3">ABOUT ME</h3>
-                    <h3 class="h3">PORTPOLIO</h3>
-                    <h3 class="h3">BOARD</h3>
-                    <h3 class="h3">CALENDAR</h3>                    
+                    <h1 class=""> Welcome to PADAC PADAC</h1>
+                    <h3 class="h3"> ABOUT ME</h3>
+                    <h3 class="h3"> PORTPOLIO</h3>
+                    <h3 class="h3"> BOARD</h3>
+                    <h3 class="h3"> CALENDAR</h3>                    
                 </div>
             </div>
         <!-- </div> -->

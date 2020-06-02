@@ -9,17 +9,21 @@
     height: 400px;
 }
 .header-div{
-    position: relative;
-    left: 25%;
+    position: absolute;
+    left: 28%;
     top: 15%;
-    width: 80%;
+    width: 55%;
     overflow: hidden;
+    flex-direction: column;
 }
 article{
     width: 100%;
     min-height: fit-content;
     flex-direction: column;
     text-align: center;
+}
+article h1:first-child{
+    font-size: 2em;
 }
 .article-container{    
     flex-direction: row;    
@@ -48,7 +52,14 @@ article{
     width: 75%;
     margin: 0 auto
 }
+.qna div div div h5{
+    font-size: 1.3em;
+}
 
+.qna div div div p{
+    font-size: 16px;
+    text-align: left;
+}
 .info div{
     flex-direction: row;
     width: 80%;
