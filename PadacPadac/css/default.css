@@ -107,3 +107,7 @@ a:visited a:active a:link{
 .center{
     text-align: center;
 }
+
+.footer a:visited, .footer a:active, .footer a:link{
+    color: #ebebeb;
+}
