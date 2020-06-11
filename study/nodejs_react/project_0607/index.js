@@ -9,13 +9,15 @@ const { auth } = require("./middleware/auth");
 
 const mongoose =  require('mongoose')
 
+const config = require('./config/key');
+
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended : true}));
 //application/json
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-mongoose.connect('mongodb+srv://dongjun:dongjun1234@mymongos-wkja4.mongodb.net/<dbname>?retryWrites=true&w=majority',{
+mongoose.connect(config.mongoURI,{
     useNewUrlParser : true, useUnifiedTopology :true, useCreateIndex : true, useFindAndModify : false
 }).then(()=> console.log('MongooseDB Connected')).catch(err => console.log(err))
 //
@@ -25,7 +27,7 @@ mongoose.connect('mongodb+srv://dongjun:dongjun1234@mymongos-wkja4.mongodb.net/<
 
 
 
-app.get('/', (req, res ) => res.send('Hello node Js And Express js 허허'))
+app.get('/', (req, res ) => res.send('Hello node Js And Express js'))
 
 //0609 7강
 app.post('/api/user/register', (req,res) => {
