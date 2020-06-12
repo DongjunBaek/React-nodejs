@@ -29,6 +29,11 @@ mongoose.connect(config.mongoURI,{
 
 app.get('/', (req, res ) => res.send('Hello node Js And Express js'))
 
+app.get('/api/hello', (req,res) =>{
+
+    res.send("안녕하세요 ~ ");
+})
+
 //0609 7강
 app.post('/api/user/register', (req,res) => {
     
