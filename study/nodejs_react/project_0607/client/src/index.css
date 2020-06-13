@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.login-box{
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  border: 10px red solid;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+
+}
+.login-box ul{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.login-box li{  
+  display: flex;  
+  
+  flex: 1;
+}
+
+.login-box li input, .login-box li label{
+  display: flex;
+  flex: 1;
+  
+}
+
+.login-box form button{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.login-box form{
+  padding: 0;
+}
