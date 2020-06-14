@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
 
@@ -53,7 +52,7 @@ function LoginPage(props) {
                         <input type="password" value={ Password } onChange={onPasswordHandler} />
                     </li>
                 </ul>                
-                <button>
+                <button type="submit">
                     Login
                 </button>
             </form>
