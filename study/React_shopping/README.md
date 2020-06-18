@@ -1,16 +1,11 @@
-Hello, My Friends  
-Thank you for Having interest in this repository ! 
+React Project 쇼핑몰 제작 
 
-To use this application, 
+환경 설정
 
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
+1. dev.js -> mongoDB 계정설정 파일 추가 ( key )
+2. node_module download ( server, client )
+3. node run dev ( server, client 실행 )
 
 
-If you have problem, feel free to ask me ^^ 
-
- You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
+*** 쇼핑몰 강의 ***
+인프런 React 강의 by John Ahn
