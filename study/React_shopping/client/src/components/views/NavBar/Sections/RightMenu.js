@@ -19,6 +19,12 @@ function RightMenu(props) {
     });
   };
 
+  const uploadHandler = () => {
+    alert("Page To upload")
+    props.history.push("/product/upload");
+    
+  }
+
   if (user.userData && !user.userData.isAuth) {
     return (
       <Menu mode={props.mode}>
@@ -33,6 +39,9 @@ function RightMenu(props) {
   } else {
     return (
       <Menu mode={props.mode}>
+        <Menu.Item key="upload">
+          <a onClick={uploadHandler}>Upload</a>
+        </Menu.Item>
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>Logout</a>
         </Menu.Item>
