@@ -1,0 +1,13 @@
+.dropzone-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.FileUploadType1{
+    display : flex;
+    width: 300px;
+    height: 240px;
+    border: 1px solid #ebebeb;
+    align-items: center;
+    justify-content: center;
+}

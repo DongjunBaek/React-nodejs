@@ -3,7 +3,7 @@ import React, { useState} from 'react'
 // import './UploadProductPage.css';
 import './UploadProductPage.css';
 import {Typography, Button, Form, Input } from 'antd';
-
+import FileUpload from '../../utils/FileUpload';
 const {TextArea } = Input;
 const Continents = [
     { key : 1, value : "Africa" },
@@ -52,6 +52,7 @@ function UploadProductPage() {
             <br/>
             <Form>
                 {/* DropZone */}
+                <FileUpload/>
             <label>Name</label>
             <Input onChange={titleChangeHandler} value={Title}/>
             <br/>
