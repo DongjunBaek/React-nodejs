@@ -1,11 +1,11 @@
-package til.bfs;
+package til.hash;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class bfs {
+public class hash {
 	public static void main(String[] args) {
-		bfs bfs = new bfs();
+		hash bfs = new hash();
 		System.out.println("Answer is "+bfs.solution());
 		
 	}
