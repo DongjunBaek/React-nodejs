@@ -1,24 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Dropzone from 'react-dropzone'
-import { Icon} from 'antd';
-import './FileUpload.css';
+import { Icon } from 'antd';
 import axios from 'axios';
+import './FileUpload.css';
+
 function FileUpload() {
+    //useState 에 배열선언 : 여러개의 이미지 업로드위해서.
+    const [Images, setImages] = useState([])
 
     const dropHandler = (files) => {
 
-        let formData = new formData();
+        let formData = new FormData();
 
         const config = {
             header : { 'content-type' : 'multipart/form-data'}
         }
-        formData.append("files", files[0])
 
+        formData.append('file', files[0]);        
+        // console.log(formData.get('file'));
 
+        
         axios.post('/api/product/image', formData, config)
             .then(response => {
                 if(response.data.success){
-                    console.log('files save')
+                    console.log(response.data);
+
+                    setImages([...Images, response.data.filePath])
                 }else {
                     alert('file does not save')
                 }
@@ -39,6 +46,14 @@ function FileUpload() {
                 )}
 
             </Dropzone>
+
+            <div className="loaded-container">
+                {Images.map((image, index)=> (
+                    <div key={index}>
+                        <img className="loaded-img" src={`http://localhost:5000/${image}`} alt=""/>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
