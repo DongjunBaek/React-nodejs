@@ -4,6 +4,7 @@ import React, { useState} from 'react'
 import './UploadProductPage.css';
 import {Typography, Button, Form, Input } from 'antd';
 import FileUpload from '../../utils/FileUpload';
+import Axios from 'axios';
 const {TextArea } = Input;
 const Continents = [
     { key : 1, value : "Africa" },
@@ -17,7 +18,7 @@ const Continents = [
 ]
 
 
-function UploadProductPage() {
+function UploadProductPage(props) {
 
     const [Title, setTitle] = useState("")
     const [Description, setDescription] = useState("")
@@ -43,6 +44,41 @@ function UploadProductPage() {
         console.log(Continents[event.currentTarget.value-1]);
     }
 
+    const updateImages = (newImages) => {
+        setImages(newImages);
+    }
+
+    const submitHandler = (event) => {
+        event.preventDefault();//page refresh 방지
+        console.log('submit')
+        if(!Title || !Description || !Price || !Continent || !Images){
+            return alert(' 모든값을 입력하셔야합니다.');
+        }
+
+        const body = {
+            //로그인된 사용자의 ID
+            writer : props.user.userData._id,
+            title : Title,
+            description : Description,
+            price : Price,
+            images : Images,
+            contients : Continent
+
+        }
+
+        Axios.post("/api/product", body)
+            .then(response => {
+                if(response.data.success){
+                    alert('success Upload')
+                    //Upload Page에서 페이지가 랜딩페이지로 이동
+                    props.history.push("/");
+                }else {
+                    alert('Failed Uplaod')
+                }
+            })
+
+
+    }
     return (
         <div className="container-upload">
             <div>
@@ -52,32 +88,32 @@ function UploadProductPage() {
             <br/>
             <Form>
                 {/* DropZone */}
-                <FileUpload/>
-            <label>Name</label>
-            <Input onChange={titleChangeHandler} value={Title}/>
-            <br/>
-            <br/>
-            <label>Description</label>
-            <TextArea onChange={descriptionChangeHandler} value = {Description}/>
-            <br/>
-            <br/>
-            <label>Price( $ )</label>
-            <Input type="number" onChange= {priceChangeHander} value = {Price}/>
-            <br/>
-            <br/>
-            <select onChange = {continentChangeHandler} value= {Continent}>
+                <FileUpload refreshFunction={updateImages}/>
+                <label>Name</label>
+                <Input onChange={titleChangeHandler} value={Title}/>
+                <br/>
+                <br/>
+                <label>Description</label>
+                <TextArea onChange={descriptionChangeHandler} value = {Description}/>
+                <br/>
+                <br/>
+                <label>Price( $ )</label>
+                <Input type="number" onChange= {priceChangeHander} value = {Price}/>
+                <br/>
+                <br/>
+                <select onChange = {continentChangeHandler} value= {Continent}>
 
-                { Continents.map(item => (
-                <option key = {item.key} value= { item.key }> {item.value}</option>
-                ))}
+                    { Continents.map(item => (
+                    <option key = {item.key} value= { item.key }> {item.value}</option>
+                    ))}
 
-            </select>
-            <br/>
-            <br/>
-            <br/>
-            <Button>
-                Regist
-            </Button>
+                </select>
+                <br/>
+                <br/>
+                <br/>
+                <Button type="submit" onClick={ submitHandler } >
+                    Regist
+                </Button>
             </Form>
         </div>
     )

@@ -4,7 +4,7 @@ import { Icon } from 'antd';
 import axios from 'axios';
 import './FileUpload.css';
 
-function FileUpload() {
+function FileUpload(props) {
     //useState 에 배열선언 : 여러개의 이미지 업로드위해서.
     const [Images, setImages] = useState([])
 
@@ -26,10 +26,26 @@ function FileUpload() {
                     console.log(response.data);
 
                     setImages([...Images, response.data.filePath])
+                    props.refreshFunction([...Images, response.data.filePath]);
                 }else {
                     alert('file does not save')
                 }
             });
+    }
+
+
+    const deleteHandler = (image) => {
+        const currentIndex = Images.indexOf(image)
+        // console.log('currentIndex',currentIndex);
+
+        // 스프레드 문법
+        let newImages = [...Images]
+
+        //특정인덱스 위치 부터 몇개를 지우는 지 splice(startIndex,cnt )
+        newImages.splice(currentIndex, 1)
+
+        setImages(newImages)
+        props.refreshFunction(newImages);
     }
 
     return (
@@ -49,7 +65,7 @@ function FileUpload() {
 
             <div className="loaded-container">
                 {Images.map((image, index)=> (
-                    <div key={index}>
+                    <div key={index} onClick={()=>deleteHandler(image)}>
                         <img className="loaded-img" src={`http://localhost:5000/${image}`} alt=""/>
                     </div>
                 ))}
