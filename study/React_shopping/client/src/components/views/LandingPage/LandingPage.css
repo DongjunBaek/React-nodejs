@@ -1,0 +1,13 @@
+.landing-container{
+    width: 75%;
+    margin: 3rem auto;
+}
+
+.landing-article-1{
+    text-align: center;
+}
+
+.landing-article-2{
+    display: flex;
+    justify-content: center;
+}
