@@ -52,8 +52,14 @@ router.post('/products',(req, res)=>{
 
     //find() -> 모든 것  find(param) 조건
     //populate -> writer와 관련된 모든 정보를 가져옴.
+
+    let limit = req.body.limit ? parseInt(req.body.limit):20;
+    let skip = req.body.skip ? parseInt(req.body.skip):0
+
     Product.find()
     .populate("writer")
+    .skip(skip)
+    .limit(limit)
     .exec((err, productInfo)=>{
         if(err) return res.status(400).json({success : false, err})
         return res.status(200).json({success : true, productInfo})

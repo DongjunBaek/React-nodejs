@@ -19,8 +19,7 @@ function RightMenu(props) {
     });
   };
 
-  const uploadHandler = () => {
-    alert("Page To upload")
+  const uploadHandler = () => {    
     props.history.push("/product/upload");
     
   }
