@@ -67,4 +67,16 @@ router.post('/products',(req, res)=>{
     
 })
 
+router.post('/delete',(req, res)=>{
+
+    var fs = require('fs')
+
+    console.log(req.body.filePath);
+    fs.unlink(req.body.filePath, (err)=>{
+        if(err)
+        return res.json({success : false, err})
+        return res.json({success : true})
+    })
+})
+
 module.exports = router;

@@ -4,7 +4,11 @@ import { Icon } from 'antd';
 import axios from 'axios';
 import './FileUpload.css';
 
+
 function FileUpload(props) {
+
+    
+
     //useState 에 배열선언 : 여러개의 이미지 업로드위해서.
     const [Images, setImages] = useState([])
 
@@ -40,6 +44,20 @@ function FileUpload(props) {
 
         // 스프레드 문법
         let newImages = [...Images]
+
+        console.log(newImages[currentIndex]);
+        //file delete
+        let body = {
+            "filePath" :newImages[currentIndex]
+        }
+        axios.post('/api/product/delete',body)
+        .then(response => {
+            if(response.data.success){
+                console.log('Success file Delete')
+            }else{
+                console.log('Failed file delete')
+            }
+        })
 
         //특정인덱스 위치 부터 몇개를 지우는 지 splice(startIndex,cnt )
         newImages.splice(currentIndex, 1)
