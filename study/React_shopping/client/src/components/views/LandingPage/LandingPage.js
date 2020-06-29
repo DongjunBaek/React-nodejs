@@ -5,8 +5,8 @@ import './LandingPage.css';
 import {Icon, Col, Card, Row, Carousel} from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
-
-
+import CheckBox from '../LandingPage/Section/CheckBox'
+import  {continents} from '../LandingPage/Section/Datas'
 // import Checkbox from './Sections/CheckBox';
 // import Radiobox from './Sections/RadioBox';
 // import SearchFeature from './Sections/SearchFeature';
@@ -18,31 +18,56 @@ function LandingPage() {
     const [Products, setProducts] = useState([])
     const [Skip, setSkip] = useState(0)
     const [Limit, setLimit] = useState(8)
+    const [PostSize, setPostSize] = useState(0)  
+    const [Filters, setFilters] = useState({
+        continents : [],
+        price: []
+    })
 
     // loaded componet After
     useEffect(() => {
 
         let body = {
-            skip:Skip,
+            skip : Skip,
             limit : Limit
         }
         
+        getProducts(body)
+
+    }, [])
+
+    const getProducts = (body) => {
+
         axios.post('/api/product/products', body)
         .then(response => {
             if(response.data.success){
-                console.log(response.data);
-                setProducts(response.data.productInfo)
+                // console.log(response.data);
+                if(body.loadMore){
+                    setProducts([...Products, ...response.data.productInfo])
+                }else {
+                    setProducts(response.data.productInfo)                    
+                }
+                setPostSize(response.data.PostSize)
             }else {
                 alert('상품 정보를 가져오는 것에 실패했습니다.')
             }
         })
-    }, [])
-
-    
+    }
 
     const loadMoreHandler = () => {
 
+        let skip = Skip + Limit
 
+        
+        let body = {
+            skip : skip,
+            limit : Limit,
+            loadMore : true
+        }
+
+        getProducts(body)
+
+        setSkip(skip)
     }
 
 
@@ -61,6 +86,14 @@ function LandingPage() {
         </Col>
     })
 
+    
+    const handleFilters = (filters, category) => {
+
+        const newFilters = {...Filters}
+
+        newFilters[category]
+    }
+
     return (
         <div className="landing-container">
             <div className="landing-article-1">
@@ -68,6 +101,10 @@ function LandingPage() {
             </div>
 
             {/* Filter*/}
+            {/* CheckBox */}
+            <CheckBox list={continents} handleFilters={filter => handleFilters(filters, "continents")} />
+            {/* RadioBox */}
+
             {/*Search*/}
             {/* Cards*/}
             {/* gutter 는 간격 */}
@@ -75,11 +112,12 @@ function LandingPage() {
                 {renderCards}
             </Row>
                 
-
-
-            <div className="landing-article-2">
-                <button onClick={loadMoreHandler}>More</button>
-            </div>
+            {PostSize >= Limit &&
+            
+                <div className="landing-article-2">
+                    <button onClick={loadMoreHandler}>More</button>
+                </div>
+            }
         </div>
     )
 }
