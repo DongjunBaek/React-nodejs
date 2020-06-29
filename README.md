@@ -1,22 +1,20 @@
-# Learn React
+# My_Study
 
-## 프론트엔트 개발자는 어떠한 기술스택이 필요한지 궁금했고, 이러한 것들을 활용한 기술 스택 쌓기 위해 리액트 프로젝트를 공부한다.
+매일 공부하는 내용들을 추가하는 것입니다. 매일 최소 1commit을 하도록 노력하고 있습니다.
 
----
+# My_Study
 
-목표
+- bolider-plate
 
-1. Node.js & Express.js  For Server 기능 구현
-    - 회원가입 기능
-    - 로그인, 로그아웃 기능 ( Cookie로 구현)
-    - Auth  인증 기능 구현 ( 인증된 사용자 DB의 TOKEN을 활용 )
-    - Bcrypt 라이브러리를 활용한 password 암호화
-2. MongoDB 사용
-    - MongoDB Atlas를 활용하여 사용하였다.
-    - NoSQL basic
-3. React.js
-    - Component
-    - Redux를 활용한 방식
-    - State 와 Props 차이
-    - Flux 구조 와 MVC 구조
-    - 기본  기능 페이지 구현
+    기본적인 react 템플릿 입니다. 기본적인 Router설정과 회원가입관련 정보를 구현했습니다.
+
+    Site : 인프런 John Ahn 강의
+
+    React.js, node.js, mongoDB 를 활용하여 구성합니다.
+
+- TIL 
+공부한 내용들과 코딩 문제를 풀고 저장합니다.
+
+- React-shopping
+
+    React기본 강의를 수강하고 실제로 혼자서 프로젝트를 만들수 있는 기본적인 구성을 실습합니다. 강의를 수강하여 최종 목표는 1인 프로젝트 개발로서, 개발하고싶은 내용들을 하나씩 구현할 것입니다. ex) PortPolio 프로젝트, etc...
