@@ -12,7 +12,7 @@
 
     React.js, node.js, mongoDB 를 활용하여 구성합니다.
 
-- CodingTest 
+- TIL 
 공부한 내용들과 코딩 문제를 풀고 저장합니다.
 
 - React-shopping
