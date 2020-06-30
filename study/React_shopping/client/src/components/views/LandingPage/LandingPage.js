@@ -86,12 +86,28 @@ function LandingPage() {
         </Col>
     })
 
-    
+    const showFilterResults = filters => {
+
+        let body = {
+            skip : 0,
+            limit : Limit, 
+            filters : filters
+
+        }
+
+
+        getProducts(body)
+        //카테고리 선택후 시작부분은 0번부터 보여주기위한 초기화
+        setSkip(0)
+    }
+
     const handleFilters = (filters, category) => {
 
         const newFilters = {...Filters}
 
-        newFilters[category]
+        newFilters[category] = filters
+
+        showFilterResults(newFilters)
     }
 
     return (
@@ -102,7 +118,7 @@ function LandingPage() {
 
             {/* Filter*/}
             {/* CheckBox */}
-            <CheckBox list={continents} handleFilters={filter => handleFilters(filters, "continents")} />
+            <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")} />
             {/* RadioBox */}
 
             {/*Search*/}
