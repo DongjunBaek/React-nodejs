@@ -1,7 +1,7 @@
-# My_Study
+# My_Study Study-folder
 
 매일 공부하는 내용들을 추가하는 것입니다. 매일 최소 1commit을 하도록 노력하고 있습니다.
-
+# My_Study padacpadac - react-porpolio site제작중
 # My_Study
 
 - bolider-plate
