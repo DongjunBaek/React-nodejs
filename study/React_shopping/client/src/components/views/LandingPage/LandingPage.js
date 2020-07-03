@@ -6,9 +6,8 @@ import {Icon, Col, Card, Row, Carousel} from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from '../LandingPage/Section/CheckBox'
-import  {continents} from '../LandingPage/Section/Datas'
-// import Checkbox from './Sections/CheckBox';
-// import Radiobox from './Sections/RadioBox';
+import  {continents, price} from '../LandingPage/Section/Datas'
+import Radiobox from './Section/RadioBox';
 // import SearchFeature from './Sections/SearchFeature';
 // import { continents, price } from './Sections/Datas';
 
@@ -117,9 +116,21 @@ function LandingPage() {
             </div>
 
             {/* Filter*/}
-            {/* CheckBox */}
-            <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")} />
-            {/* RadioBox */}
+
+            <Row gutter={[16, 16]}>
+                <Col lg = {12} xs = {24}  >
+                    {/* CheckBox */}
+                    <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")} />
+                
+                </Col>
+                <Col lg = {12} xs = { 24 }>
+                    {/* RadioBox */}
+                    <Radiobox list={price} handleFilters={filters => handleFilters(filters, 'price')}></Radiobox>
+                </Col>
+
+            </Row>
+
+            
 
             {/*Search*/}
             {/* Cards*/}
