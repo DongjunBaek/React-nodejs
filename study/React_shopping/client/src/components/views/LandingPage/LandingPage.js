@@ -72,7 +72,7 @@ function LandingPage() {
 
     const renderCards = Products.map((product, index)=>{
 
-        console.log('product', product)
+        // console.log('product', product)
         return <Col lg={6} md={8} xs={24} key={index}>
             <Card                
                 cover={<ImageSlider images={product.images}/>}
@@ -99,14 +99,32 @@ function LandingPage() {
         //카테고리 선택후 시작부분은 0번부터 보여주기위한 초기화
         setSkip(0)
     }
+    const handlePrice = (value) => {
+        const data = price;
+        let array = [];
 
+        for(let key in data){
+
+            if(data[key]._id === parseInt(value, 10)){
+                array = data[key].array;
+            }
+        }
+
+        return array;
+    }
     const handleFilters = (filters, category) => {
 
         const newFilters = {...Filters}
 
         newFilters[category] = filters
 
+        if(category === "price"){
+            let priceValues = handlePrice(filters)
+            newFilters[category] = priceValues
+        }
+
         showFilterResults(newFilters)
+        setFilters(newFilters)
     }
 
     return (
