@@ -8,7 +8,7 @@ import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from '../LandingPage/Section/CheckBox'
 import  {continents, price} from '../LandingPage/Section/Datas'
 import Radiobox from './Section/RadioBox';
-// import SearchFeature from './Sections/SearchFeature';
+import SearchFeature from './Section/SearchFeature';
 // import { continents, price } from './Sections/Datas';
 
 function LandingPage() {
@@ -22,7 +22,7 @@ function LandingPage() {
         continents : [],
         price: []
     })
-
+    const [SearchTerm, setSearchTerm] = useState("")
     // loaded componet After
     useEffect(() => {
 
@@ -114,6 +114,7 @@ function LandingPage() {
     }
     const handleFilters = (filters, category) => {
 
+
         const newFilters = {...Filters}
 
         newFilters[category] = filters
@@ -126,6 +127,12 @@ function LandingPage() {
         showFilterResults(newFilters)
         setFilters(newFilters)
     }
+
+    const updateSearchTerm = (newSearchTerm) =>{
+        setSearchTerm(newSearchTerm)
+    } 
+
+
 
     return (
         <div className="landing-container">
@@ -151,6 +158,10 @@ function LandingPage() {
             
 
             {/*Search*/}
+            <div style={{display:'flex', justifyContent:'flex-end',margin:'1rem auto'}}>
+                <SearchFeature refreshFunction={updateSearchTerm}/>
+            </div>
+
             {/* Cards*/}
             {/* gutter 는 간격 */}
             <Row gutter={16}>
