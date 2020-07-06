@@ -40,6 +40,17 @@ const productSchma =  mongoose.Schema({
 
 }, {timeStamp : true});
 
+//mongoDB weight 관련 정보 확인 in Search 
+productSchma.index({
+    title : 'text',
+    description : 'text'
+}, {
+    weights : {
+        title : 5,
+        description : 1
+    }
+})
+
 const Product = mongoose.model('Product', productSchma);
 
 module.exports = { Product }
