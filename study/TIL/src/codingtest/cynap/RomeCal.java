@@ -5,31 +5,34 @@ import java.util.Scanner;
 public class RomeCal {
 
 	public static void main(String[] args) {
-		// i = 1  
-		// ii = 2 
-		// iii = 3
-		// iv = 4
-		// v = 5
-		// vi = 6
-		// vii = 7
-		// viii = 8
-		// ix = 9
-		// x = 10
 		
-		// xi = 11
-		// xii = 12
-		// xiii = 13
-		// xiv = 14
-		// xv = 15
-		// xvi = 16
-		// xvii = 17
-		// xviii = 18
-		// xix = 19
-		// xx = 20
+		/**
+		 * i = 1  
+		 * ii = 2
+		 * iii = 3
+         * iv = 4
+         * v = 5
+         * vi = 6
+         * vii = 7
+         * viii = 8
+         * ix = 9
+         * x = 10
+         * 
+         * xi = 11
+         * xii = 12
+         * xiii = 13
+         * xiv = 14
+         * xv = 15
+         * xvi = 16
+         * xvii = 17
+         * xviii = 18
+         * xix = 19
+         * xx = 20
+		 */
+		
+		
 		RomeCal r = new RomeCal();
-//		Scanner sc = new Scanner(System.in);
-//		System.out.print("Rome =");
-//		String s1 = sc.next();
+
 //		String[] testcase = {
 //				"i",
 //				"ii",
@@ -101,7 +104,8 @@ public class RomeCal {
 				break;
 			case '/':
 				if(num1 > num2) {
-					result = num1 / num2;					
+					result = num1 / num2;
+					return "몫 "+convertRome(result)+", 나머지 "+convertRome(num1%num2);
 				} else { 
 					msg = "작은 수를 큰 수로 나눌 수 없습니다.";
 				}				

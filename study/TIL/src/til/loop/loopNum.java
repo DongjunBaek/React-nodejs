@@ -20,8 +20,8 @@ public class loopNum {
 				
 		int[][] arr = new int[n][n];
 		//top
-		for(int i = 0; i < arr.length;i++) {// 0 ~ 7
-			for(int j=0; j < arr[i].length;j++) { // 0 ~ 7				
+		for(int i = 0; i < arr.length;i++) {
+			for(int j=0; j < arr[i].length;j++) {				
 				if(i > j) {
 					System.out.print(n-j);
 					arr[i][j] = n-j;
