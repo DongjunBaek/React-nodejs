@@ -40,9 +40,6 @@ router.post('/', (req, res) => {
         return res.status(200).json({success : true})
     })
 
-
-    
-
 })
 
 
@@ -126,5 +123,24 @@ router.post('/delete',(req, res)=>{
         return res.json({success : true})
     })
 })
+
+router.get('/product_by_id', (req, res) => {
+    
+    //productId를 이용하여 DB에 저장된 정보중 productId와 같은 상품정보를 가져온다.
+
+    let type = req.query.type
+    let productId =req.query.id
+
+    Product.find({_id : productId})
+    .populate('writer')
+    .exec((err, product) => {
+        if(err) return res.status(400).send(err)
+        return res.status(200).send({success : true,product})
+    })
+
+
+})
+
+
 
 module.exports = router;
