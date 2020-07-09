@@ -96,33 +96,32 @@ Tag : React, Redux, Node.js, WebApp, MongoDB
 
        * DetailProductPage
 
-        상품 상세 정보
+            상품 상세 정보
 
        * Footer
 
-        사이트 하단
+            사이트 하단
 
        * LandingPage
 
-        시작페이지, 상품 슬라이드쇼
+            시작페이지, 상품 슬라이드쇼
 
        * LoginPage
 
-        로그인
+            로그인
 
        * NavBar
 
-        메뉴
-    
-        + Home
-        + Login/Logout
-        + Sign-in
-        + Sign-up
+            메뉴
+              + Home
+              + Login/Logout
+              + Sign-in
+              + Sign-up
 
         * RegisterPage
 
-        회원 가입
+            회원 가입
 
         * UploadProductPage
 
-        상품 업로드
+            상품 업로드
