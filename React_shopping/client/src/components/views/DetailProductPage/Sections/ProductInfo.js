@@ -1,10 +1,19 @@
 import React from 'react'
 import {Button, Descriptions } from 'antd';
+import { useDispatch} from 'react-redux';
+import { addToCart } from '../../../../_actions/user_actions';
 
 function ProductInfo(props) {
 
+    const dispatch = useDispatch();
+
     const clickHandler = () => {
-        
+
+
+        //필요한 정보를 Cart 필드에 넣어준다.
+        //_id, quantity, date
+        //이곳 부터는 axois를 활용하지 않고redux를 활용하여 한다.User 정보는 redux로활용했었기 때문.
+        dispatch(addToCart(props.detail._id))
     }
 
 
