@@ -64,15 +64,29 @@ export function addToCart(id) {
 }
 
 export function getCartItems(cartItems, userCart) {
-    const request = axios.get(`/api/product/product_by_id?id=${cartItems}&type=array`)
+    // console.log('test',cartItems)
+    
+    const request = axios.get(`/api/product/product_by_id?id=${cartItems}&type=array`)                    
     .then(response => {
         // cartItem들에 해당하는 정보들을 
         //Product Collection에서 가져온 후에
         // Quantity 정보를 넣어준다.
+        console.log('test')
+        userCart.forEach(cartItem => {
+            response.data.product.forEach((productDetail, index) => {
+                if(cartItem.id === productDetail._id){
+                    
+                    response.data.product[index].quantity = cartItem.quantity
+                }
+            })
+        })
+        //payload에 리턴되는 값
+        return response.data;
     });
 
     return {
-        type : GET_CART_ITEMS
+        type : GET_CART_ITEMS,
+        payload : request
     }
 
 }

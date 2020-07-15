@@ -18,10 +18,11 @@ function CartPage(props) {
                 })
 
                 dispatch(getCartItems(cartItems, props.user.userData.cart))
+                // console.log(cartItems)
             }
         }
         
-    }, [])
+    }, [props.user.userData])
 
 
     return (
