@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react'
-import { useDispatch} from 'react-redux';
+import React, {useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { getCartItems } from '../../../_actions/user_actions';
+import UserCardBlock from './Sections/UserCardBlock';
 //rfce
 function CartPage(props) {
 
@@ -26,8 +27,12 @@ function CartPage(props) {
 
 
     return (
-        <div>
-            CartPage
+        <div style={{width : '85%', margin : '3rem auto'}}>
+            <h1>My Cart</h1>
+
+            <div>
+                <UserCardBlock product={props.user.cartDetail && props.user.cartDetail.product} />                
+            </div>
         </div>
     )
 }
