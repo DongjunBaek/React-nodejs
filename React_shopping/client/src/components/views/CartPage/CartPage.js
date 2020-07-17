@@ -31,7 +31,7 @@ function CartPage(props) {
             <h1>My Cart</h1>
 
             <div>
-                <UserCardBlock product={props.user.cartDetail && props.user.cartDetail.product} />                
+                <UserCardBlock product={props.user.cartDetail } />                
             </div>
         </div>
     )
