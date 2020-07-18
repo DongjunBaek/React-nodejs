@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require("../models/User");
-
+const { Product } =require("../models/Product");
 const { auth } = require("../middleware/auth");
 
 //=================================
@@ -125,4 +125,35 @@ router.post("/addToCart", auth, (req, res) => {
     //상품이 추가된 정보를 redux에 저장하기
 });
 
+
+router.get('/removeFromCart', auth, (req, res)=> {
+
+    //1. Cart에 지우려는 상품 삭제
+    // 상품을 빼기하기 위해서 $pull 을 사용한다.
+    // req.query 를 사용하는 이유는 get방식으로 넘겨진 파라미터데이터를 가져올때 body가 아닌 query에 담겨있기 때문이다.
+    User.findOneAndUpdate(
+        {_id : req.user._id},
+        {
+            "$pull" :
+            { "cart" : {"id" : req.query.id}}
+        },
+        { new : true},
+        (err, userInfo)=>{
+            let cart = userInfo.cart
+            let array = cart.map(item => {
+                return item.id
+            })
+            //2. Product collection 에서 현재 남아있는 상품들의 정보를 가져오기
+            Product.find( { _id : {$in : array}})
+            .populate('writer')
+            .exec((err, productInfo) => {
+                return res.status(200).json({
+                    productInfo,
+                    cart
+                })
+            })
+            //ProductInfo와 cart를 모두 가져오는 이유 : 다시 정보를 가져와서 주기 위함(업데이트)
+            //productInfo 와 cart정보를 조합하여 CartDetail을 만든다.
+        })
+});
 module.exports = router;

@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getCartItems } from '../../../_actions/user_actions';
+import { getCartItems, removeCartItem } from '../../../_actions/user_actions';
 import UserCardBlock from './Sections/UserCardBlock';
 //rfce
 function CartPage(props) {
@@ -38,13 +38,18 @@ function CartPage(props) {
         setTotal(total)
     }
 
-
+    let removeFromCart = (productId) => {
+        dispatch(removeCartItem(productId))
+        .then(response => {
+            console.log(response)
+        })
+    }
     return (
         <div style={{width : '85%', margin : '3rem auto'}}>
             <h1>My Cart</h1>
 
             <div>
-                <UserCardBlock product={props.user.cartDetail } />                
+                <UserCardBlock product={props.user.cartDetail } removeItem={removeFromCart}/>                
             </div>
 
             <div style = {{marginTop: '3rem'}}>

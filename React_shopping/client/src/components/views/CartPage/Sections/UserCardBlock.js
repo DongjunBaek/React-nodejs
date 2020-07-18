@@ -25,8 +25,8 @@ function UserCardBlock(props) {
                     $ {product.price}
                 </td>
                 <td>
-                    <button>
-                        remove
+                    <button onClick = { ()=>props.removeItem(product._id)}>
+                        Remove
                     </button>
                 </td>
             </tr>
