@@ -4,6 +4,8 @@ import { getCartItems } from '../../../_actions/user_actions';
 import UserCardBlock from './Sections/UserCardBlock';
 //rfce
 function CartPage(props) {
+    
+    const [Total, setTotal] = useState(0)
 
     const dispatch = useDispatch();
 
@@ -19,11 +21,22 @@ function CartPage(props) {
                 })
 
                 dispatch(getCartItems(cartItems, props.user.userData.cart))
+                .then(response => {calculateTotal(response.payload)})
                 // console.log(cartItems)
             }
         }
         
     }, [props.user.userData])
+
+    let calculateTotal = (cartDetail) => {
+        let total = 0;
+
+        cartDetail.map(item => {
+            total += parseInt(item.price,10) * item.quantity
+        })
+
+        setTotal(total)
+    }
 
 
     return (
@@ -32,6 +45,10 @@ function CartPage(props) {
 
             <div>
                 <UserCardBlock product={props.user.cartDetail } />                
+            </div>
+
+            <div style = {{marginTop: '3rem'}}>
+                <h2>Total Amout : ${Total} </h2>
             </div>
         </div>
     )
