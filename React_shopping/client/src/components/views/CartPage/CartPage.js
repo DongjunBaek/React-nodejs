@@ -2,12 +2,15 @@ import React, {useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getCartItems, removeCartItem } from '../../../_actions/user_actions';
 import UserCardBlock from './Sections/UserCardBlock';
+import { Empty } from 'antd';
 //rfce
 function CartPage(props) {
     
     const [Total, setTotal] = useState(0)
 
     const dispatch = useDispatch();
+
+    const [ShowTotal, setShowTotal] = useState(false)
 
     useEffect(() => {
 
@@ -36,12 +39,18 @@ function CartPage(props) {
         })
 
         setTotal(total)
+        setShowTotal(true)
     }
 
+    //remove btn click event
     let removeFromCart = (productId) => {
         dispatch(removeCartItem(productId))
         .then(response => {
-            console.log(response)
+            //response 는 남은 상품 정보 이다.
+            // console.log(response)
+            if(response.payload.productInfo.length <= 0){
+                setShowTotal(false)
+            }
         })
     }
     return (
@@ -52,9 +61,15 @@ function CartPage(props) {
                 <UserCardBlock product={props.user.cartDetail } removeItem={removeFromCart}/>                
             </div>
 
-            <div style = {{marginTop: '3rem'}}>
-                <h2>Total Amout : ${Total} </h2>
-            </div>
+            {/* ShowTotal? Check Ture & False */}
+            {ShowTotal ?
+
+                <div style={{ marginTop: '3rem' }}>
+                    <h2>Total Amout : ${Total} </h2>
+                </div>
+                :
+                <Empty style={{marginTop : '3rem'}} description={false}/>
+            }
         </div>
     )
 }
