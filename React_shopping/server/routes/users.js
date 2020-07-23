@@ -154,6 +154,33 @@ router.get('/removeFromCart', auth, (req, res)=> {
             })
             //ProductInfo와 cart를 모두 가져오는 이유 : 다시 정보를 가져와서 주기 위함(업데이트)
             //productInfo 와 cart정보를 조합하여 CartDetail을 만든다.
-        })
+        })  
 });
+
+
+router.post('/successBuy', auth, (req, res)=> {
+
+    // 1. User Collection 안에 History 필드 안에 간단한 결제 정보 넣어주기
+    let history = []; //배열선언
+    let transactionData = {}; //객체 선언
+
+    req.body.cartDetail.forEach((item)=>{
+        history.push({
+            dataOfPurchase : Date.now(),
+            name : item.title,
+            id : item._id,
+            price : item.price,
+            quantity : item.quantity,
+            paymentId : req.body.paymentData.paymentId
+        })
+    })
+    
+    // 2. Payment Collection 안에 자세한 결제 정보를 넣어주기
+    
+    // 3. Product Collection sold(팔린 상품 숫자)필드 를 변경한다.
+});
+
+
+
+
 module.exports = router;

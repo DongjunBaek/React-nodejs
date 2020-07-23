@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getCartItems, removeCartItem } from '../../../_actions/user_actions';
+import { getCartItems, removeCartItem, onSuccessBuy } from '../../../_actions/user_actions';
 import UserCardBlock from './Sections/UserCardBlock';
 import { Empty } from 'antd';
 import Paypal from '../../utils/Paypal';
@@ -54,6 +54,29 @@ function CartPage(props) {
             }
         })
     }
+
+    const transactionSuccess = (data) => {
+
+        //두가지의 정보를 보낸다.
+        // Payment collection (Detailed) paypal에서 보내준 데이타
+        // User Collection (Simple)     cartDetail
+        dispatch(onSuccessBuy({
+            paymentData : data,
+            cartDetail : props.user.cartDetail
+        }))
+        .then(response => {
+            if(response.payload.success){
+                //상품 가격 초기화
+                setShowTotal(false)
+
+            } else {
+
+            }
+        })
+    }
+
+
+
     return (
         <div style={{width : '85%', margin : '3rem auto'}}>
             <h1>My Cart</h1>
@@ -76,7 +99,8 @@ function CartPage(props) {
             {
                 ShowTotal &&
                 <Paypal
-                    total = {Total}    
+                    total = {Total}
+                    onSuccess = {transactionSuccess}    
                 />
             }
 
