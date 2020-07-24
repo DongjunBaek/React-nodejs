@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User } = require("../models/User");
 const { Product } =require("../models/Product");
+const { Payment } = require("../models/Payment");
 const { auth } = require("../middleware/auth");
 
 //=================================
@@ -176,8 +177,40 @@ router.post('/successBuy', auth, (req, res)=> {
     })
     
     // 2. Payment Collection 안에 자세한 결제 정보를 넣어주기
+    //user <= auth를 통해 가져옴
+    //data
+    //product
+    transactionData.user = {
+        id : req.user._id,
+        name : req.user.name,
+        email : req.user.email
+    }
+
+    transactionData.data = req.body.paymentData
+
+    transactionData.product = req.body.history
+
+        User.findOneAndUpdate(
+            {_id : req.user._id},
+            { $push : {history : history}, $set : { cart : []}},
+            { new :  true},
+            (err, user) => {
+                if(err) return res.json({success : false, err})
+
+
+                //payment에 transactionData 정보 저장
+                const payment = new Payment(transactionData)
+                payment.save((err, doc)=> {
+                    if(err) return res.json({success : false, err})
+
+                    // 3. Product Collection sold(팔린 상품 숫자)필드 를 변경한다.
+                    
+                })
+            }
+        )
     
-    // 3. Product Collection sold(팔린 상품 숫자)필드 를 변경한다.
+
+
 });
 
 
