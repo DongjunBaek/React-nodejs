@@ -4,7 +4,7 @@ const { User } = require("../models/User");
 const { Product } =require("../models/Product");
 const { Payment } = require("../models/Payment");
 const { auth } = require("../middleware/auth");
-
+const async = require('async');
 //=================================
 //             User
 //=================================
@@ -204,7 +204,37 @@ router.post('/successBuy', auth, (req, res)=> {
                     if(err) return res.json({success : false, err})
 
                     // 3. Product Collection sold(팔린 상품 숫자)필드 를 변경한다.
+                    // npm install async
+
+                    // 상품 당 몇개 (quantity)를 샀는지
+
+                    let products = [];
+                    doc.product.forEach(item => {
+                        products.push({id : item.id, quantity : item.quantity })
+                    })
+                    async.eachSeries(products, (item, callback) => {
+                        
+                        Product.update(
+                            {_id : item.id },
+                            {
+                                $inc : {
+                                    "sold" : item.quantity
+                                }
+                            },
+                            { new : false},
+                            callback
+                        )
+
+                    }, (err) => {
+                        if(err) return res.json({success : false, err})
+                        res.status(200).json({
+                            success : true,
+                            cart : user.cart,
+                            cartDetail : []
+                        })
+                    })
                     
+
                 })
             }
         )

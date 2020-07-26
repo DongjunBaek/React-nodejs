@@ -4,6 +4,7 @@ import { getCartItems, removeCartItem, onSuccessBuy } from '../../../_actions/us
 import UserCardBlock from './Sections/UserCardBlock';
 import { Empty } from 'antd';
 import Paypal from '../../utils/Paypal';
+import { Result, Button } from 'antd';
 //rfce
 function CartPage(props) {
     
@@ -12,6 +13,7 @@ function CartPage(props) {
     const dispatch = useDispatch();
 
     const [ShowTotal, setShowTotal] = useState(false)
+    const [ShowSuccess, setShowSuccess] = useState(false)
 
     useEffect(() => {
 
@@ -68,7 +70,7 @@ function CartPage(props) {
             if(response.payload.success){
                 //상품 가격 초기화
                 setShowTotal(false)
-
+                setShowSuccess(true)
             } else {
 
             }
@@ -85,14 +87,25 @@ function CartPage(props) {
                 <UserCardBlock product={props.user.cartDetail } removeItem={removeFromCart}/>                
             </div>
 
+
+            
+
+
+
+
             {/* ShowTotal? Check Ture & False */}
             {ShowTotal ?
 
                 <div style={{ marginTop: '3rem' }}>
                     <h2>Total Amout : ${Total} </h2>
                 </div>
-                :
-                <Empty style={{marginTop : '3rem'}} description={false}/>
+                : ShowSuccess ?
+                    <Result
+                        status="success"
+                        title="Successfully Purchased Items"
+                    />
+                    :
+                    <Empty style={{ marginTop: '3rem' }} description={false} />
             }
 
 
