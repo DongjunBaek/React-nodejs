@@ -1,0 +1,7 @@
+.boardList-container{
+    display: flex;
+    width: 800px;
+    height: 900px;
+    border: 1px solid red;
+    
+}
